@@ -20,7 +20,7 @@ class LTS
     @transitions.transition_list lts["transitions"], @actions, @states
   end
 
-  def compose(other_lts, h)
+  def compose(other_lts, h=[])
     new_LTS = LTS.new
     new_LTS.states = States.new
     new_LTS.initial_states = InitStates.new
@@ -34,6 +34,6 @@ class LTS
 
   def to_tex(filename)
     tikz = Tikz.new(@states, @initial_states, @actions, @transitions)
-    File.open("#{filename}.tex", 'w') { |file| file.write(tikz.to_tikz) }
+    File.open("gen/#{filename}.tex", 'w') { |file| file.write(tikz.to_tikz) }
   end
 end
