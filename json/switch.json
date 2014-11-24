@@ -18,5 +18,13 @@
             "from_state": "pressed",
             "to_state": "pressed"
         }
+    ],
+    "atom_propositions" : ["lightOn", "highBattUse"],
+    "labeling_function" : [
+        {
+            "off": [],
+            "low" : ["lightOn"],
+            "high" : ["lightOn", "highBattUse"]
+        }
     ]
 }
