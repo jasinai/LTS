@@ -24,7 +24,7 @@ class LTS
     @actions.actions_list(lts["actions"])
     @transitions.transition_list(lts["transitions"], @actions, @states)
     @atomic_propositions.atomic_proposition_list(lts["atomic_propositions"]) if lts["atomic_propositions"]
-    @label_states.label_states_list(lts["atomic_propositions"])  if lts["atomic_propositions"]
+    @label_states.label_states_list(lts["label_states"], @atomic_propositions)  if lts["atomic_propositions"]
   end
 
   def compose(other_lts, h=[])

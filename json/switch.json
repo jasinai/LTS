@@ -20,11 +20,11 @@
         }
     ],
     "atomic_propositions" : ["lightOn", "highBattUse"],
-    "label_states" : [
+    "label_states" :
         {
             "off": [],
             "low" : ["lightOn"],
             "high" : ["lightOn", "highBattUse"]
         }
-    ]
+
 }

@@ -10,4 +10,8 @@ class AtomicPropositions < Hash
   def atomic_proposition_list(aps)
     aps.each { |ap_name| @aps[ap_name] = AtomicProposition.new(ap_name) }
   end
+
+  def include?(ap)
+    @aps.include?(ap)
+  end
 end

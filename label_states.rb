@@ -6,7 +6,10 @@ class LabelStates
     @label_states = {}
   end
 
-  def label_states_list(label_states)
-    label_states.each { |state, label| @label_states[state] = LabelState.new(state, label) }
+  def label_states_list(label_states, aps)
+    label_states.each do |state, labels|
+      labels.delete_if { |label| !aps.include?(label)} if labels
+      @label_states[state] = LabelState.new(state, labels)
+    end
   end
 end
