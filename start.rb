@@ -13,6 +13,11 @@ lightCompSwitch = light_lts.compose(switch_lts, ["press", "hold"])
 lightCompSwitch.to_tex("comp")
 `pdflatex --output-directory gen/ gen/comp.tex`
 
+railroadcrossing_lts = LTS.new
+railroadcrossing_lts.parse_json("json/railroadcrossing.json")
+railroadcrossing_lts.to_tex("railroadcrossing")
+`pdflatex --output-directory gen/ gen/railroadcrossing.tex`
+
 tl1 = LTS.new
 tl1.parse_json("json/TL1.json")
 tl1.to_tex("TL1")

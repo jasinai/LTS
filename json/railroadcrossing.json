@@ -1,0 +1,30 @@
+{
+    "states": ["no_train", "train_incoming", "train_in_crossing"],
+    "initial_states": ["no_train"],
+    "actions": ["train_entering", "train_before_crossing", "train_after_crossing"],
+    "transitions": [
+        {
+            "action": "train_entering",
+            "from_state": "no_train",
+            "to_state": "train_incoming"
+        },
+        {
+            "action": "train_before_crossing",
+            "from_state": "train_incoming",
+            "to_state": "train_in_crossing"
+        },
+        {
+            "action": "train_after_crossing",
+            "from_state": "train_in_crossing",
+            "to_state": "no_train"
+        }
+    ],
+    "atom_propositions" : ["blinking", "barrierdown"],
+    "label_states" :
+        {
+            "no_train": [],
+            "train_incoming": ["blinking"],
+            "train_in_crossing": ["blinking", "barrierdown"]
+        }
+
+}
