@@ -4,8 +4,10 @@ require './init_states'
 require './transitions'
 require './actions'
 require './tikz'
+require './atomic_propositions'
+require './label_states'
 class LTS
-  attr_accessor :states, :initial_states, :transitions, :actions
+  attr_accessor :states, :initial_states, :transitions, :actions, :atomic_propositions, :label_states
 
   def parse_json(file)
     f = File.read(file)
@@ -14,10 +16,15 @@ class LTS
     @initial_states = InitStates.new
     @transitions = Transitions.new
     @actions = Actions.new
+    @atomic_propositions = AtomicPropositions.new if lts["atomic_propositions"]
+    @label_states = LabelStates.new if lts['label_states']
+
     @states.states_list(lts["states"])
     @initial_states.init_states_list(lts["initial_states"], @states)
     @actions.actions_list(lts["actions"])
-    @transitions.transition_list lts["transitions"], @actions, @states
+    @transitions.transition_list(lts["transitions"], @actions, @states)
+    @atomic_propositions.atomic_proposition_list(lts["atomic_propositions"]) if lts["atomic_propositions"]
+    @label_states.label_states_list(lts["atomic_propositions"])  if lts["atomic_propositions"]
   end
 
   def compose(other_lts, h=[])
