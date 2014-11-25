@@ -23,5 +23,13 @@
             "from_state": "low",
             "to_state": "high"
         }
-    ]
+    ],
+    "atomic_propositions" : ["lightOn", "highBattUse"],
+    "label_states" :
+    {
+        "off": [],
+        "low" : ["lightOn"],
+        "high" : ["lightOn", "highBattUse"]
+    }
+
 }

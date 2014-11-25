@@ -14,4 +14,8 @@ class AtomicPropositions < Hash
   def include?(ap)
     @aps.include?(ap)
   end
+
+  def compose(aps, other_aps)
+    @aps = aps.merge(other_aps)
+  end
 end
